@@ -1,17 +1,18 @@
 import { useState, useEffect } from "react";
 
-
-
-
-function SearchBar() {
+function SearchBar({ onSearchResults }) {
     const [inputValue, getInputValue] = useState("");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
-
     const handleInputValue = (event) => {
         getInputValue(event.target.value);
     };
+
+    const handleMovie = () => {
+        setMovies(data);
+    };
+
 
     const handleButtonClick = async () => {
         if (!inputValue.trim()) {
@@ -33,7 +34,7 @@ function SearchBar() {
             const data = await response.json();
 
             console.log('Fetched Movie Data:', data);
-
+            onSearchResults(data.results);
             // update dispay to show movie data 
         } catch (err) {
             setError(err);
@@ -43,10 +44,6 @@ function SearchBar() {
         }
 
     };
-
-
-
-
 
     return (
         <div>
