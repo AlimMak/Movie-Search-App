@@ -1,26 +1,33 @@
+import React from "react";
+import MovieCard from "./MovieCard";
+
+function handleMovie(movie, key) {
+    key = movie.id;
+    // console.log(key);
+    const movieObject = {
+        Key: movie.id,
+        Title: movie.title,
+        RelaseDate: movie.release_date,
+        MovieImage: movie.poster_path ? (<img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.title} />) : null
+    };
+
+    return <MovieCard data={movieObject} />
+}
+
+
 function MovieList({ movies }) {
-  return (
-    <div>
-      {movies.length === 0 ? (
-        <p>No movies found. Try a search.</p>
-      ) : (
-        <ul>
-          {movies.map((movie) => (
-            <li key={movie.id}>
-              <h3>{movie.title}</h3>
-              <p>Release Date: {movie.release_date}</p>
-              {movie.poster_path && (
-                <img
-                  src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-                  alt={movie.title}
-                />
-              )}
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
+    if (movies.length === 0){
+        return <p>Try another movie name please</p>
+    }
+
+    return (
+        <div>
+            {movies.map((movie) =>(
+                <MovieCard key = {movie.id} data={{Key: movie.id, Title: movie.title, RelaseDate: movie.release_date,
+                MovieImage: movie.poster_path ? (<img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.title} />) : null }}/>
+            ))}
+        </div>
+    );
 }
 
 export default MovieList;
