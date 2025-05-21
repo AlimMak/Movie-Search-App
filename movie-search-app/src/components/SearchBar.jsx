@@ -9,11 +9,6 @@ function SearchBar({ onSearchResults }) {
         getInputValue(event.target.value);
     };
 
-    const handleMovie = () => {
-        setMovies(data);
-    };
-
-
     const handleButtonClick = async () => {
         if (!inputValue.trim()) {
             alert("Please enter a movie name!");
