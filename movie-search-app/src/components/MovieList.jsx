@@ -3,14 +3,30 @@ import MovieCard from "./MovieCard";
 
 function MovieList({ movies }) {
     if (movies.length === 0){
-        return <p>Try another movie name please</p>
+        return (
+            <div className="text-center py-8">
+                <p className="text-gray-600 text-lg">Try another movie name please</p>
+            </div>
+        );
     }
 
     return (
-        <div>
-            {movies.map((movie) =>(
-                <MovieCard key = {movie.id} data={{Key: movie.id, Title: movie.title, RelaseDate: movie.release_date,
-                MovieImage: movie.poster_path ? (<img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.title} />) : null }}/>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6">
+            {movies.map((movie) => (
+                <MovieCard 
+                    key={movie.id} 
+                    data={{
+                        Title: movie.title,
+                        release_date: movie.release_date,
+                        MovieImage: movie.poster_path ? 
+                            <img 
+                                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} 
+                                alt={movie.title}
+                                className="w-full h-full object-cover"
+                            /> 
+                            : null
+                    }}
+                />
             ))}
         </div>
     );
