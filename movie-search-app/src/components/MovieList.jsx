@@ -22,6 +22,7 @@ function MovieList({ movies, hasSearched }) {
                     data={{
                         Title: movie.title,
                         release_date: movie.release_date,
+                        Description: movie.overview,
                         MovieImage: movie.poster_path ? 
                             <img 
                                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} 
