@@ -44,6 +44,12 @@ function App() {
     setSelectedMovie(null);
   };
 
+  const handleHomeClick = () => {
+    setMovies([]);
+    setHasSearched(false);
+    setSelectedMovie(null);
+  };
+
   return(
     <div className={
       (darkMode
@@ -52,6 +58,27 @@ function App() {
       ' min-h-screen'
     }>
       <div className="max-w-6xl mx-auto px-4 py-12 relative">
+        <div className="absolute top-6 left-6">
+          <button
+            onClick={handleHomeClick}
+            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            <svg 
+              className="w-5 h-5 text-gray-700 dark:text-gray-300 transition-colors duration-300" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                strokeWidth={2} 
+                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" 
+              />
+            </svg>
+            <span className="text-gray-700 dark:text-gray-300 font-medium transition-colors duration-300">Home</span>
+          </button>
+        </div>
         <ThemeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
         <Header darkMode={darkMode} />
         {/* Search Section */}
