@@ -1,11 +1,11 @@
 import React from "react";
 import MovieCard from "./MovieCard";
 
-function MovieList({ movies, hasSearched }) {
+function MovieList({ movies, hasSearched, onMovieClick }) {
     if (hasSearched && movies.length === 0){
         return (
             <div className="text-center py-8">
-                <p className="text-gray-600 text-lg">Try another movie name please</p>
+                <p className="text-gray-600 dark:text-gray-400 text-lg">Try another movie name please</p>
             </div>
         );
     }
@@ -32,6 +32,7 @@ function MovieList({ movies, hasSearched }) {
                             /> 
                             : null
                     }}
+                    onCardClick={onMovieClick}
                 />
             ))}
         </div>

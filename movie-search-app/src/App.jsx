@@ -4,10 +4,12 @@ import SearchBar from './components/SearchBar';
 import MovieList from './components/MovieList';
 import ThemeToggle from './components/ThemeToggle';
 import Header from './components/Header';
+import MovieModal from './components/MovieModal';
 
 function App() {
   const [movies, setMovies] = useState([]);
   const [hasSearched, setHasSearched] = useState(false);
+  const [selectedMovie, setSelectedMovie] = useState(null);
   const [darkMode, setDarkMode] = useState(() => {
     // Check localStorage or system preference
     if (typeof window !== 'undefined') {
@@ -34,6 +36,14 @@ function App() {
     setHasSearched(true);
   };
 
+  const handleMovieClick = (movie) => {
+    setSelectedMovie(movie);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedMovie(null);
+  };
+
   return(
     <div className={
       (darkMode
@@ -58,8 +68,13 @@ function App() {
               <p className="text-lg">Your search results will appear here</p>
             </div>
           )}
-          <MovieList movies={movies} hasSearched={hasSearched} />
+          <MovieList movies={movies} hasSearched={hasSearched} onMovieClick={handleMovieClick} />
         </div>
+
+        {/* Movie Modal */}
+        {selectedMovie && (
+          <MovieModal movie={selectedMovie} onClose={handleCloseModal} />
+        )}
       </div>
     </div>
   );
