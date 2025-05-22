@@ -1,5 +1,13 @@
+import { useState } from 'react';
+
 function MovieCard(props){
     const {data} = props;
+    const [expanded, setExpanded] = useState(false);
+    const maxLength = 200;
+    const isLong = data.Description && data.Description.length > maxLength;
+    const displayText = expanded || !isLong
+        ? data.Description
+        : data.Description.slice(0, maxLength) + '...';
     // console.log(data.id)
     // console.log(data.release_date);
     return(
@@ -13,11 +21,17 @@ function MovieCard(props){
                     </div>
                 )}
                 {data.Description && (
-                    <p className="text-gray-700 text-sm">
-                        {data.Description.length > 200
-                            ? data.Description.slice(0, 200) + '...'
-                            : data.Description}
-                    </p>
+                    <>
+                        <p className="text-gray-700 text-sm mb-2">{displayText}</p>
+                        {isLong && (
+                            <button
+                                className="text-blue-600 hover:underline text-sm font-medium focus:outline-none"
+                                onClick={() => setExpanded((prev) => !prev)}
+                            >
+                                {expanded ? 'Show less' : 'Read more'}
+                            </button>
+                        )}
+                    </>
                 )}
             </div>
         </div>
