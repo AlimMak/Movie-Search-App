@@ -23,6 +23,7 @@ function MovieList({ movies, hasSearched }) {
                         Title: movie.title,
                         release_date: movie.release_date,
                         Description: movie.overview,
+                        Rating: movie.vote_average,
                         MovieImage: movie.poster_path ? 
                             <img 
                                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} 
