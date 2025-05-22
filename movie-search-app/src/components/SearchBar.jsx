@@ -4,19 +4,22 @@ function SearchBar({ onSearchResults }) {
     const [inputValue, getInputValue] = useState("");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const [showEmptyInputMessage, setShowEmptyInputMessage] = useState(false);
 
     const handleInputValue = (event) => {
         getInputValue(event.target.value);
+        setShowEmptyInputMessage(false);
     };
 
     const handleButtonClick = async () => {
         if (!inputValue.trim()) {
-            alert("Please enter a movie name!");
+            setShowEmptyInputMessage(true);
             return;
         }
 
         setLoading(true);
         setError(null);
+        setShowEmptyInputMessage(false);
 
         try {
             const apiKey = "b38dfb832f07047399aef83c80e3f6fc";
@@ -72,6 +75,12 @@ function SearchBar({ onSearchResults }) {
                         ) : 'Search'}
                     </button>
                 </div>
+
+                {showEmptyInputMessage && (
+                    <div className="p-3 text-yellow-700 bg-yellow-100 rounded-lg">
+                        <p className="font-medium">Please enter a movie name to search</p>
+                    </div>
+                )}
 
                 {error && (
                     <div className="p-3 text-red-700 bg-red-100 rounded-lg">

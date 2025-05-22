@@ -1,13 +1,17 @@
 import React from "react";
 import MovieCard from "./MovieCard";
 
-function MovieList({ movies }) {
-    if (movies.length === 0){
+function MovieList({ movies, hasSearched }) {
+    if (hasSearched && movies.length === 0){
         return (
             <div className="text-center py-8">
                 <p className="text-gray-600 text-lg">Try another movie name please</p>
             </div>
         );
+    }
+
+    if (movies.length === 0) {
+        return null;
     }
 
     return (
