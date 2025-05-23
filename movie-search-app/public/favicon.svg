@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="32" height="32" fill="#FF6B6B"/>
+  <!-- Camera body -->
+  <rect x="4" y="8" width="24" height="16" rx="3" fill="#FFE66D" stroke="#333" stroke-width="2"/>
+  <!-- Lens -->
+  <circle cx="16" cy="16" r="6" fill="#4ECDC4" stroke="#333" stroke-width="2"/>
+  <circle cx="16" cy="16" r="3" fill="#333"/>
+  <!-- Film reel -->
+  <circle cx="7" cy="16" r="3" fill="#FF6B6B" stroke="#333" stroke-width="2"/>
+  <circle cx="25" cy="16" r="3" fill="#FF6B6B" stroke="#333" stroke-width="2"/>
+  <!-- Handle -->
+  <path d="M28 10L30 8V24L28 22" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Flash -->
+  <path d="M16 4L19 7L16 10L13 7L16 4" fill="#FFE66D" stroke="#333" stroke-width="2"/>
+</svg> 
