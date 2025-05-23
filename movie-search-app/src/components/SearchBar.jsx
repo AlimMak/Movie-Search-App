@@ -22,7 +22,10 @@ function SearchBar({ onSearchResults }) {
         setShowEmptyInputMessage(false);
 
         try {
-            const apiKey = "b38dfb832f07047399aef83c80e3f6fc";
+            const apiKey = import.meta.env.VITE_TMDB_API_KEY;
+            if (!apiKey) {
+                throw new Error('API key is not configured');
+            }
             const apiURL = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${inputValue}`;
 
             const response = await fetch(apiURL);
